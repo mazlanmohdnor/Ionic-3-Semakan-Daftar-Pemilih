@@ -1,0 +1,6 @@
+AIzaSyA1-5Q5sgxEECyw955_kP4GeUyu6zPUPo4
+AIzaSyCasclYJyo8rPv9YTk2RPw8NgXlicKXa6A
+
+ionic cordova plugin add https://github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps --variable API_KEY_FOR_ANDROID="AIzaSyA1-5Q5sgxEECyw955_kP4GeUyu6zPUPo4" 
+
+ionic cordova plugin add cordova-plugin-googlemaps --variable API_KEY_FOR_ANDROID=AIzaSyCasclYJyo8rPv9YTk2RPw8NgXlicKXa6A

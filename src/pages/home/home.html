@@ -1,14 +1,76 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="darkblue">
+        <ion-title>
+            Semakan Daftar Pemilih
+        </ion-title>
+        <p class="headerinfo">Maklumat semakan adalah seperti Daftar Pemilih Terkini Suku 4 Tahun 2016 yang diwartakan pada 29 Mac 2017.</p>
+
+        <ion-buttons end>
+            <button ion-button icon-left clear large (click)="presentModal()">
+              <ion-icon name="heart" color="danger"></ion-icon>
+              <!-- info -->
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+
+    <div #map id="map" class="map">
+        <div class="info" [hidden]="!show">
+            <table class="tg">
+                <tr>
+                    <td class="tg-yw4l">Kad Pengenalan:</td>
+                    <td class="tg-yw4l"><b>{{details.ic}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">Nama:</td>
+                    <td class="tg-yw4l"> <b>{{details.nama}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">Dun:</td>
+                    <td class="tg-yw4l"><b>{{details.dun}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">Lokaliti:</td>
+                    <td class="tg-yw4l"> <b> {{details.lokaliti}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">Daerah Undi:</td>
+                    <td class="tg-yw4l"><b>{{details.daerah_undi}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">Parlimen:</td>
+                    <td class="tg-yw4l"> <b>{{details.parlimen}}</b></td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="header-content">
+
+            <ion-col col-12>
+                <ion-item>
+                    <ion-label>
+                        <ion-icon name="card"></ion-icon>
+                    </ion-label>
+
+                    <ion-input type="tel" placeholder="No. Kad Pengenalan" [(ngModel)]="ic" [textMask]="{mask: masks.ic}" clearInput (input)="enableInput()"></ion-input>
+                </ion-item>
+
+            </ion-col>
+
+
+
+            <ion-row>
+                <ion-col col-6> <button ion-button block (click)="getdetail()" color="secondary" [attr.disabled]="input ? '' : null">Semak</button></ion-col>
+                <ion-col col-6>
+                    <button ion-button block (click)="reset()" color="danger">Semula</button>
+                </ion-col>
+
+            </ion-row>
+        </div>
+    </div>
+
+
 </ion-content>
