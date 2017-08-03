@@ -17,6 +17,7 @@ import {TextMaskModule} from 'angular2-text-mask'
 //ionic native
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 
 
@@ -54,7 +55,9 @@ import { EmailComposer } from '@ionic-native/email-composer';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MydaftarproviderProvider,
     EmailComposer,
-    SocialSharing
+    SocialSharing,
+    AdMobFree
+
   ]
 })
 export class AppModule {}

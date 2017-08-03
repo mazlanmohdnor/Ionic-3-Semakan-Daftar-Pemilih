@@ -2,6 +2,7 @@ import { InfoPage } from './../info/info';
 import { Component } from '@angular/core';
 import { NavController, Platform, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { GoogleMap, GoogleMaps, LatLng, CameraPosition, GoogleMapsEvent, MarkerOptions, Marker } from '@ionic-native/google-maps';
+import { AdMobFreeBannerConfig, AdMobFree } from '@ionic-native/admob-free';
 
 //provider
 import { MydaftarproviderProvider } from './../../providers/mydaftarprovider/mydaftarprovider';
@@ -44,18 +45,39 @@ export class HomePage {
   }
  
 
-  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform:Platform) {
+  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform:Platform, public adMobFree:AdMobFree) {
     this.masks = {
       ic: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
     };
-    
+
   }
 
+ //ads
+  async showBannerAd() {
+    try {
+      const bannerConfig: AdMobFreeBannerConfig = {
+        id:'ca-app-pub-8469816531943468/4102330882',
+        isTesting: false,
+        autoShow: true
+        // size:'320x32'
+      }
+
+      this.adMobFree.banner.config(bannerConfig);
+
+      const result = await this.adMobFree.banner.prepare();
+      console.log(result);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
 
 
 
   ionViewDidLoad() {
     this.platform.ready().then(() => {
+      this.showBannerAd();
+      
       this.reset();
     })
    
