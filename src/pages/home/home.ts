@@ -1,6 +1,6 @@
 import { InfoPage } from './../info/info';
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, Platform, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { GoogleMap, GoogleMaps, LatLng, CameraPosition, GoogleMapsEvent, MarkerOptions, Marker } from '@ionic-native/google-maps';
 
 //provider
@@ -44,18 +44,23 @@ export class HomePage {
   }
  
 
-  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform:Platform) {
     this.masks = {
       ic: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
     };
+    
   }
+
 
 
 
   ionViewDidLoad() {
-    // this.reset();
-    this.mapFunction(this.lat, this.lng, this.lokasi, 18);
+    this.platform.ready().then(() => {
+      this.reset();
+    })
+   
   }
+ 
 
   mapFunction(lat,lng, lokasi,zoom) {
     //semd to map
@@ -227,7 +232,9 @@ export class HomePage {
 
   //show modal
   presentModal() {
-    let modal = this.modalCtrl.create(InfoPage);
-    modal.present();
+    this.navCtrl.push(InfoPage);
+    // let modal = this.modalCtrl.create(InfoPage);
+    // modal.present();
+    // this.map.setClickable(false);
   }
 }
