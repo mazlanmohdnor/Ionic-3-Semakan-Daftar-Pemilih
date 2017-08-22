@@ -18,6 +18,8 @@ import {TextMaskModule} from 'angular2-text-mask'
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { AdMobFree } from '@ionic-native/admob-free';
+import { AppRate } from '@ionic-native/app-rate';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 
@@ -35,11 +37,8 @@ import { AdMobFree } from '@ionic-native/admob-free';
     
     IonicModule.forRoot(MyApp, {
       scrollAssist: false,    // Valid options appear to be [true, false]
-      autoFocusAssist: false  // Valid options appear to be ['instant', 'delay', false]
+      autoFocusAssist: false  // Valid options appear to be ['instant', 
     })
-    // AgmCoreModule.forRoot({
-    //   apiKey:'AIzaSyA1-5Q5sgxEECyw955_kP4GeUyu6zPUPo4'
-    // })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,7 +55,9 @@ import { AdMobFree } from '@ionic-native/admob-free';
     MydaftarproviderProvider,
     EmailComposer,
     SocialSharing,
-    AdMobFree
+    AdMobFree,
+    AppRate,
+    InAppBrowser
 
   ]
 })

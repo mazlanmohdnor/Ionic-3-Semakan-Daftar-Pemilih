@@ -1,1 +1,45 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<ion-menu #sidebar [content]="content" (ionOpen)="onMenuOpen($event)" (ionClose)="onMenuClose($event)">
+
+
+
+    <ion-content>
+        <ion-card text-center class="hide-card">
+            <img src="assets/spr.png" class="custom-avatar" />
+            <br>
+            <h2>Semakan Daftar Pemilih</h2>
+            <p>version 1.5 | 22 August 2017</p>
+            <!-- <p>Last Update: </p> -->
+        </ion-card>
+        <br>
+        <ion-list no-lines>
+            <ion-item menuClose (click)="presentModal()">
+                <ion-icon name="heart" item-start color="darkblue"></ion-icon>
+                <h2>About</h2>
+            </ion-item>
+            <ion-item menuClose (click)="rate()">
+                <ion-icon name="star" item-start color="darkblue"></ion-icon>
+                <h2>Rate 5 Stars</h2>
+            </ion-item>
+            <ion-item menuClose (click)="sendEmail()">
+                <ion-icon name="mail" item-start color="darkblue"></ion-icon>
+                <h2>Send Feedback</h2>
+            </ion-item>
+            <ion-item menuClose (click)="share()">
+                <ion-icon name="share" item-start color="darkblue"></ion-icon>
+                <h2>Share App</h2>
+            </ion-item>
+            <ion-item menuClose (click)="moreapp()">
+                <ion-icon name="apps" item-start color="darkblue"></ion-icon>
+                <h2>More App</h2>
+            </ion-item>
+            <ion-item menuClose (click)="portfolio()">
+                <ion-icon name="person" item-start color="darkblue"></ion-icon>
+                <h2>My Portfolio</h2>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav #myNav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

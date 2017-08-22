@@ -18,5 +18,41 @@
 
 .infobg {
     background-color: #21D4FD;
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B620FF 100%);
+}
+
+.hide-card {
+    -webkit-box-shadow: none!important;
+    border-radius: 0px;
+    width: 100%;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background: url('../assets/budak.jpg');
+    background-size: cover;
+    background-position: center;
+    // background: #4766A7;
+    h2 {
+        color: #fff !important;
+        margin-top: 15px !important;
+        font-weight: bold;
+    }
+    p {
+        color: #fff !important;
+    }
+}
+
+.item-md {
+    padding-left: 40px;
+    // margin-top: 20px;
+}
+
+.custom-avatar {
+    height: 30vw;
+    width: 30vw;
+    // border: 1px solid #fff;
+    // border-radius: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }

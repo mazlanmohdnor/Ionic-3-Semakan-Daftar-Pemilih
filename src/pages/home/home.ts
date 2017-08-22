@@ -1,6 +1,6 @@
 import { InfoPage } from './../info/info';
 import { Component } from '@angular/core';
-import { NavController, Platform, LoadingController, AlertController, ModalController } from 'ionic-angular';
+import { NavController, Platform, LoadingController, AlertController, ModalController, Events } from 'ionic-angular';
 import { GoogleMap, GoogleMaps, LatLng, CameraPosition, GoogleMapsEvent, MarkerOptions, Marker } from '@ionic-native/google-maps';
 import { AdMobFreeBannerConfig, AdMobFree } from '@ionic-native/admob-free';
 
@@ -45,7 +45,7 @@ export class HomePage {
   }
  
 
-  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform:Platform, public adMobFree:AdMobFree) {
+  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform: Platform, public adMobFree: AdMobFree, public events: Events) {
     this.masks = {
       ic: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
     };
@@ -71,17 +71,25 @@ export class HomePage {
       console.error(e);
     }
   }
-
+//ads end
 
 
   ionViewDidLoad() {
     this.platform.ready().then(() => {
-      this.showBannerAd();
       
+
+
+   
+      //show ads
+      this.showBannerAd();
+     
+
+      //reset app
       this.reset();
     })
    
   }
+ 
  
 
   mapFunction(lat,lng, lokasi,zoom) {
@@ -104,12 +112,23 @@ export class HomePage {
         title: lokasi
       };
 
-      let marker = map.addMarker(markeroptions).then((marker: Marker) => {
+      map.addMarker(markeroptions).then((marker: Marker) => {
         marker.showInfoWindow();
       })
 
+
+
+      this.events.subscribe('sidebar:open', () => {
+        map.setClickable(false);
+      });
+
+      this.events.subscribe('sidebar:close', () => {
+        map.setClickable(true)
+      })
+     
     })
  }
+
 
  //code 202 
   showPrompt() {
@@ -235,9 +254,9 @@ export class HomePage {
     this.lokasi='Malaysia'
     this.show = false;
     this.input = true;
-    this.mapFunction(this.lat, this.lng, this.lokasi, 18);
+    this.mapFunction(this.lat, this.lng, this.lokasi, 6);
     this.dismissLoading();
-
+    
   }
 
   enableInput() {
@@ -259,4 +278,5 @@ export class HomePage {
     // modal.present();
     // this.map.setClickable(false);
   }
+
 }
