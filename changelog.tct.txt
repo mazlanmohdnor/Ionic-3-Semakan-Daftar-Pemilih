@@ -1,0 +1,22 @@
+<en-US>
+1.5 Release
+
+✅ Added Side Menu
+✅ Code Optimization
+✅ Increase Performance
+
+-------------------------------------------------------------------------
+
+1.4 Release
+
+✅ Fixed maps not initialize
+✅ Fixed untouchable contact page button
+✅ Fixed typo
+
+--------------------------------------------------------------------------
+
+1.2 Release
+
+✅ Fixed typo
+</en-US>
+

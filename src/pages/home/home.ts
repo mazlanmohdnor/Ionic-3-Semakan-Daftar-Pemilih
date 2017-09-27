@@ -1,3 +1,4 @@
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { InfoPage } from './../info/info';
 import { Component } from '@angular/core';
 import { NavController, Platform, LoadingController, AlertController, ModalController, Events } from 'ionic-angular';
@@ -12,7 +13,7 @@ import { NativeGeocoder, NativeGeocoderForwardResult } from '@ionic-native/nativ
   templateUrl: 'home.html'
 })
 export class HomePage {
-  zoom: number=12;
+  zoom: number=6;
   daerah: any;
   icNum: number;
   input: boolean = true;
@@ -24,6 +25,7 @@ export class HomePage {
   masks: any;
   show: boolean = false;
   map: GoogleMap;
+  
   public loader;
   // public loader = this.loadingCtrl.create({
   //   content: "Menyemak Data..",
@@ -45,7 +47,7 @@ export class HomePage {
   }
  
 
-  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform: Platform, public adMobFree: AdMobFree, public events: Events) {
+  constructor(public navCtrl: NavController, public mydaftar: MydaftarproviderProvider, private nativeGeocoder: NativeGeocoder, public googleMaps: GoogleMaps, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public modalCtrl: ModalController, public platform: Platform, public adMobFree: AdMobFree, public events: Events, public iab:InAppBrowser) {
     this.masks = {
       ic: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
     };
@@ -117,6 +119,7 @@ export class HomePage {
       })
 
 
+      map.setClickable(false);
 
       this.events.subscribe('sidebar:open', () => {
         map.setClickable(false);
@@ -132,6 +135,8 @@ export class HomePage {
 
  //code 202 
   showPrompt() {
+
+    
     let prompt = this.alertCtrl.create({
       title: 'Maaf, Tiada rekod ditemui.',
       message: "Anda mungkin belum mendaftar atau nombor kad pengenalan yang dimasukkan tidak tepat.",
@@ -190,48 +195,78 @@ export class HomePage {
     prompt.present();
   }
 
+  // maintanance
+  maintanance() {
+    
+    let prompt = this.alertCtrl.create({
+      title: 'Maaf, Sistem Mengalami Gangguan Sementara.',
+      message: "Server SPR tidak dapat dihubungkan, klik 'Website SPR' untuk semak terus dari website.",
 
-  getdetail() {
-
-    this.showLoading();
-    this.show = true;
-    this.icNum = this.ic.replace(/\D+/g, '');
-
-
-      this.mydaftar.getDetail(this.icNum).subscribe(
-        detail => {
-        
-          //save data dlm details object
-          this.details = detail.data;
-
-          // nak amik daerah
-          let list: any[] = [];
-          for (var key in detail.data) {
-            if (detail.data.hasOwnProperty(key)) {
-              list.push(detail.data[key]);
-            }
+      buttons: [
+        {
+          text: 'Website SPR',
+          handler: data => {
+            this.iab.create('http://daftarj.spr.gov.my/defaultbm.aspx', '_self');
           }
-          //save daerah
-          this.daerah = list[3];
-
-
-          //nak check code ,204 error, 200 ok, 504 "Server SPR terlalu perlahan."
-          if (detail.code == 200) {
-            this.mapGeo(this.daerah);
+        },
+        {
+          text: 'Cancel',
+          handler: data => {
             this.dismissLoading();
-          } if (detail.code == 204) {
-            this.showPrompt();
-            this.map.setClickable(false);
-            this.reset();
-          } if (detail.code == 504) {
-            this.showPrompt2();
-            this.map.setClickable(false);
-            this.reset();
-          } else {
-            console.log("Code Error", detail.code);
+            prompt.dismiss();
+            this.mapFunction(this.lat, this.lng, this.lokasi, this.zoom);
+            this.map.setClickable(true);
           }
         }
-      )  
+      ]
+    });
+    prompt.present();
+  }
+
+
+  getdetail() {
+    this.maintanance();
+    // this.showLoading();
+    // this.show = true;
+    // this.icNum = this.ic.replace(/\D+/g, '');
+
+
+    //   this.mydaftar.getDetail(this.icNum).subscribe(
+    //     detail => {
+        
+    //       //save data dlm details object
+    //       this.details = detail.data;
+
+    //       // nak amik daerah
+    //       let list: any[] = [];
+    //       for (var key in detail.data) {
+    //         if (detail.data.hasOwnProperty(key)) {
+    //           list.push(detail.data[key]);
+    //         }
+    //       }
+    //       //save daerah
+    //       this.daerah = list[3];
+
+
+    //       //nak check code ,204 error, 200 ok, 504 "Server SPR terlalu perlahan."
+    //       if (detail.code == 200) {
+    //         this.mapGeo(this.daerah);
+    //         this.dismissLoading();
+    //       } if (detail.code == 204) {
+    //         this.map.setClickable(false);
+    //         this.showPrompt();
+    //         this.dismissLoading();
+    //         this.reset();
+    //       } if (detail.code == 504) {
+    //         this.map.setClickable(false);
+    //         this.showPrompt2();
+    //         this.dismissLoading();
+    //         this.reset();
+    //       } else {
+    //         console.log("Code Error", detail.code);
+    //       }
+        // }
+      // )  
   }
 
   mapGeo(daerah) {
