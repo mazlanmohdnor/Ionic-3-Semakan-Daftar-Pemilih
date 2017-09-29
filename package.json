@@ -24,6 +24,7 @@
         "@ionic-native/admob-free": "^4.1.0",
         "@ionic-native/app-rate": "^4.1.0",
         "@ionic-native/core": "3.12.1",
+        "@ionic-native/device": "^4.3.0",
         "@ionic-native/email-composer": "^4.1.0",
         "@ionic-native/google-maps": "^4.1.0",
         "@ionic-native/in-app-browser": "^4.1.0",

@@ -20,6 +20,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { AppRate } from '@ionic-native/app-rate';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Device } from "@ionic-native/device";
 
 
 
@@ -57,8 +58,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     SocialSharing,
     AdMobFree,
     AppRate,
-    InAppBrowser
-
+    InAppBrowser,
+    Device
   ]
 })
 export class AppModule {}

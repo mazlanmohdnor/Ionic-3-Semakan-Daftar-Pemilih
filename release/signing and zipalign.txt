@@ -3,7 +3,7 @@
 
 
 
-jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore mazlan-daftar.keystore d-u.apk mazlan
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore mazlan-daftar.keystore u-u.apk mazlan
 
 
-zipalign -v 4 d-u.apk SemakanDaftarPemilihv1.4.apk
+zipalign -v 4 u-u.apk SemakanDaftarPemilihv1.6.apk
