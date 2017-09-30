@@ -21,7 +21,7 @@ export class MydaftarproviderProvider {
     // info.append('token', 'MTUwNjY1NzAyOC44Zmg0a2NmM2pmaWdmZA');
     // info.append('token', token);
 
-    return this.http.get('https://api.jomgeek.com/v1/spr/?k=HoJ0vOxDOqUD1uRA&a='+ic_no)
+    return this.http.get('https://api.jomgeek.com/v1/spr/?k={{api}}='+ic_no)
       .map(res => res.json());
     // return this.http.post('http://myspr.spr.gov.my/semak.php', info)
       // .map(res => {

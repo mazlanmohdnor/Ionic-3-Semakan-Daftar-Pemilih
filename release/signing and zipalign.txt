@@ -6,4 +6,4 @@
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore mazlan-daftar.keystore u-u.apk mazlan
 
 
-zipalign -v 4 u-u.apk SemakanDaftarPemilihv1.6.apk
+zipalign -v 4 u-u.apk SemakanDaftarPemilihv1.8.apk
