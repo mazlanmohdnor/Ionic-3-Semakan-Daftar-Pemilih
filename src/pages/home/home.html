@@ -6,7 +6,7 @@
         <ion-title>
             Semakan Daftar Pemilih
         </ion-title>
-        <p class="headerinfo">Maklumat semakan adalah seperti Daftar Pemilih Terkini Suku 4 Tahun 2016 yang diwartakan pada 29 Mac 2017.</p>
+        <p class="headerinfo">Maklumat semakan adalah seperti Daftar Pemilih Terkini Suku 2 Tahun 2017 yang diwartakan pada 27 September 2017.</p>
 
 
         <!-- <ion-buttons end>
@@ -21,33 +21,63 @@
 <ion-content>
 
     <div #map id="map" class="map">
-        <div class="info" [hidden]="!show">
+
+        <div id="info" [hidden]="!show">
+
             <table class="tg">
                 <tr>
-                    <td class="tg-yw4l">Kad Pengenalan:</td>
-                    <td class="tg-yw4l"><b>{{details.ic}}</b></td>
+                    <td class="tg-yw4l">IC:</td>
+                    <td class="tg-yw4l"><b>{{icData}}</b></td>
                 </tr>
                 <tr>
                     <td class="tg-yw4l">Nama:</td>
-                    <td class="tg-yw4l"> <b>{{details.nama}}</b></td>
+                    <td class="tg-yw4l"> <b>{{nama}}</b></td>
                 </tr>
                 <tr>
                     <td class="tg-yw4l">Lokaliti:</td>
-                    <td class="tg-yw4l"> <b> {{details.lokaliti}}</b></td>
+                    <td class="tg-yw4l"> <b> {{lokaliti}}</b></td>
                 </tr>
                 <tr>
                     <td class="tg-yw4l">Daerah Undi:</td>
-                    <td class="tg-yw4l"><b>{{details.daerah}}</b></td>
+                    <td class="tg-yw4l"><b>{{daerah}}</b></td>
+                </tr>
+                <tr>
+                    <td class="tg-yw4l">DUN:</td>
+                    <td class="tg-yw4l"> <b>{{dun}}</b></td>
                 </tr>
                 <tr>
                     <td class="tg-yw4l">Parlimen:</td>
-                    <td class="tg-yw4l"> <b>{{details.parlimen}}</b></td>
-                </tr>
-                <tr>
-                    <td class="tg-yw4l">Negeri:</td>
-                    <td class="tg-yw4l"> <b>{{details.negeri}}</b></td>
+                    <td class="tg-yw4l"> <b>{{parlimen}}</b></td>
                 </tr>
             </table>
+
+            <div class="button" float-right>
+                <button ion-button small icon-only color="light" outline (click)="copy()">
+                                <ion-icon name="copy"></ion-icon>
+                            </button>
+                <button ion-button small icon-only color="light" outline (click)="share()">
+                                <ion-icon name="share"></ion-icon>
+                            </button>
+                <button ion-button small icon-only color="light" outline (click)="close()">
+                                <ion-icon name="arrow-dropdown"></ion-icon>
+                            </button>
+            </div>
+
+        </div>
+
+        <div id="info2" [hidden]="!button">
+
+            <div class="button" float-right>
+                <button ion-button small icon-only color="light" outline (click)="copy()">
+                                <ion-icon name="copy"></ion-icon>
+                            </button>
+                <button ion-button small icon-only color="light" outline (click)="share()">
+                                <ion-icon name="share"></ion-icon>
+                            </button>
+                <button ion-button small icon-only color="light" outline (click)="open()">
+                                <ion-icon name="arrow-dropup"></ion-icon>
+                            </button>
+            </div>
 
         </div>
         <div class="header-content">

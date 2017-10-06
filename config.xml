@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="my.mazlan.daftarpemilih" version="1.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="my.mazlan.daftarpemilih" version="1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Semakan Daftar Pemilih</name>
     <description>Applikasi Semakan Daftar Pemilih adalah bertujuan untuk memudahkan rakyat Malaysia untuk menyemak status daftar pemilih daripada Suruhanjaya Pilihan Raya Malaysia dengan mudah dan cepat. </description>
     <author email="lan.psis@gmail.com" href="http://www.mazlan.my/">Applikasi Semakan Daftar Pemilih oleh Mohd Mazlan</author>
@@ -83,6 +83,7 @@
     <allow-navigation href="http://10.114.26.196:8101" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="com.telerik.plugins.nativepagetransitions" spec="^0.6.5" />
+    <plugin name="cordova-clipboard" spec="^1.1.0" />
     <plugin name="cordova-plugin-admob-free" spec="^0.10.0" />
     <plugin name="cordova-plugin-apprate" spec="^1.3.0" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />

@@ -21,6 +21,7 @@ import { AdMobFree } from '@ionic-native/admob-free';
 import { AppRate } from '@ionic-native/app-rate';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Device } from "@ionic-native/device";
+import { Clipboard } from "@ionic-native/clipboard";
 
 
 
@@ -59,7 +60,7 @@ import { Device } from "@ionic-native/device";
     AdMobFree,
     AppRate,
     InAppBrowser,
-    Device
+    Clipboard
   ]
 })
 export class AppModule {}

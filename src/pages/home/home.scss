@@ -31,19 +31,37 @@ page-home {
         padding-left: 20px;
         border-bottom: 1px solid #dedede;
     }
-    .info {
+    #info {
         width: 98%;
         left: 0;
         right: 0;
         margin-left: auto;
         margin-right: auto;
-        padding: 17px;
-        background-color: rgba(0, 0, 0, 0.5);
+        padding: 12px;
+        background-color: rgba(0, 0, 0, 0.8);
         position: absolute;
-        bottom: 142px;
+        bottom: 138px;
         div {
             color: #fff;
         }
+    }
+    #info2 {
+        width: 98%;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px;
+        // background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        bottom: 138px;
+        // div {
+        //     color: #fff;
+        // }
+    }
+    .button {
+        // padding: 5px;
+        margin-top: 5px;
     }
     .tg {
         color: #fff;
