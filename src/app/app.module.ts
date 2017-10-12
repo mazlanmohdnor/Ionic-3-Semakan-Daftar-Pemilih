@@ -60,7 +60,8 @@ import { Clipboard } from "@ionic-native/clipboard";
     AdMobFree,
     AppRate,
     InAppBrowser,
-    Clipboard
+    Clipboard,
+    Device
   ]
 })
 export class AppModule {}

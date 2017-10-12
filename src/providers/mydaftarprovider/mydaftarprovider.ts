@@ -10,15 +10,15 @@ export class MydaftarproviderProvider {
     console.log('Hello MydaftarproviderProvider Provider');
   }
 
-  getDetail(ic_no) {
+  getDetail(ic_no, token) {
 
     let info = new URLSearchParams();
     info.append('ic', ic_no);
-    info.append('token', 'MTUwNjY1NzAyOC44Zmg0a2NmM2pmaWdmZA');
-    // info.append('token', token);
-    let options: RequestOptionsArgs = {
-      body: info
-    };
+    // info.append('token', 'MTUwNjY1NzAyOC44Zmg0a2NmM2pmaWdmZA');
+    info.append('token', token);
+    // let options: RequestOptionsArgs = {
+    //   body: info
+    // };
     // return this.http.get('https://api.jomgeek.com/v1/spr/?k={{api}}='+ic_no)
     //   .map(res => res.json());
     return this.http.post('http://myspr.spr.gov.my/semak.php', info)

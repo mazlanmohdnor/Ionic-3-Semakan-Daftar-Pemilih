@@ -70,6 +70,7 @@ export class HomePage {
     public socialshare: SocialSharing,
     public clipboard: Clipboard,
     public toast: ToastController,
+    public device:Device
   ) {
     this.masks = {
       ic: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
@@ -250,9 +251,9 @@ export class HomePage {
     let icNum = this.icNum.replace(/\D+/g, '');
 
     //generate token
-    // let token = btoa(Math.round((new Date()).getTime() / 1000) + '.' + this.device.uuid);
+    let token = btoa(Math.round((new Date()).getTime() / 1000) + '.' + this.device.uuid);
 
-    this.mydaftar.getDetail(icNum)
+    this.mydaftar.getDetail(icNum, token)
       .subscribe(
       details => {
         var json = details.json();

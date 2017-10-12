@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="my.mazlan.daftarpemilih" version="1.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="my.mazlan.daftarpemilih" version="1.10" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Semakan Daftar Pemilih</name>
     <description>Applikasi Semakan Daftar Pemilih adalah bertujuan untuk memudahkan rakyat Malaysia untuk menyemak status daftar pemilih daripada Suruhanjaya Pilihan Raya Malaysia dengan mudah dan cepat. </description>
     <author email="lan.psis@gmail.com" href="http://www.mazlan.my/">Applikasi Semakan Daftar Pemilih oleh Mohd Mazlan</author>
